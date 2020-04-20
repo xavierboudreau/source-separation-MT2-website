@@ -58,31 +58,3 @@ class Table extends Component {
 }
 
 export default Table;
-
-/*
-export default ({ dataPoints }) => { 
-    <div><div>Hello world!</div> <div>
-    <h1>My Site's Files</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Epoch</th>
-          <th>Training Loss</th>
-          <th>Validation Loss</th>
-        </tr>
-      </thead>
-      <tbody>
-        {dataPoints.map(({ node }, index) => (
-          <tr key={index}>
-            <td>{node.epoch}</td>
-            <td>{node.training_loss}</td>
-            <td>{node.validation_loss}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-    </div>
-
-}
-*/

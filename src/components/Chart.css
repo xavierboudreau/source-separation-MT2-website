@@ -1,0 +1,11 @@
+/* A react-chart hyper-responsively and continously fills the available
+    space of its parent element automatically */
+.ChartContainer {
+    height: 600px;
+    width: 800px;
+  }
+  
+.ChartContainer svg {
+    /* This prevents the X axis labels from being cut off on the right */
+    overflow: unset !important;
+}
