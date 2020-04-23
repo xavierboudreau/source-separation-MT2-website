@@ -73,7 +73,6 @@ var lineChart = (
 )
 
   return <div>
-      <h1>Training Stats</h1>
       {lineChart}
     </div> 
 }
