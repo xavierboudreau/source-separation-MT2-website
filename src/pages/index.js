@@ -29,7 +29,7 @@ const IndexPage = () => {
                     <Menu prompt = 'Select a file' endpoint = 'my-files' callback = {fileSelection}/>
                     <Menu prompt = 'Select a model' endpoint = 'my-models' callback = {modelSelection}/>
                 </div>
-                <SeparationButton/>
+                <SeparationButton selectedFile={selectedFile} selectedModel={selectedModel}/>
                 <h2>Training Stats</h2>
                 <FancyChart/> 
             </Layout>

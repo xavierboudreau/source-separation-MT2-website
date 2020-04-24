@@ -18,7 +18,7 @@ export default function SimpleMenu(props) {
         setAnchorEl(null);
     };
 
-    const handleClick2 = useCallback(async (event) => {
+    const handleClick = useCallback(async (event) => {
         //Sets status of menu
         setAnchorEl(event.currentTarget);
 
@@ -44,7 +44,7 @@ export default function SimpleMenu(props) {
 
     return (
         <div>
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick2}>
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             {menuPrompt}
         </Button>
         <Menu
@@ -58,9 +58,7 @@ export default function SimpleMenu(props) {
                 <MenuItem data-my-value = {filename} onClick={handleClose}>
                     {filename}
                 </MenuItem>))}
-            <MenuItem data-my-value = {'Profile'} onClick={handleClose}>Profile</MenuItem>
-            <MenuItem data-my-value = {'My account'} onClick={handleClose}>My account</MenuItem>
-            <MenuItem data-my-value = {'Logout'} onClick={handleClose}>Logout</MenuItem>
+            
         </Menu>
         </div>
     );
