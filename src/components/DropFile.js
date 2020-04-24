@@ -40,7 +40,7 @@ class DropFile extends Component {
     maxSelectFile=(event)=>{
     let files = event.target.files
         if (files.length > 1) { 
-            const msg = 'Only 1 files can be uploaded at a time'
+            const msg = 'Only 1 file can be uploaded at a time'
             event.target.value = null
             toast.warn(msg)
             return false;
@@ -87,8 +87,8 @@ class DropFile extends Component {
         }
 
         axios.post("http://localhost:8001/upload", data)
-        .then(res => {toast.success('upload success')})
-        .catch(err => {toast.error('upload fail')})
+        .then(_ => {toast.success('upload success')})
+        .catch(_ => {toast.error('upload fail')})
     }
 
     render() {

@@ -10,16 +10,17 @@ import SeparationButton from "../components/SeparationButton"
 const IndexPage = () => {
     const [selectedFile, setSelectedFile] = useState(null)
     const [selectedModel, setSelectedModel] = useState(null)
+    // Tells React that setSelectedModelMemo won't change unless selectedModel changes
+    const setSelectedModelMemo = useCallback(setSelectedModel, [selectedModel])
+    const setSelectedFileMemo = useCallback(setSelectedFile, [selectedFile])
 
     const fileSelection = useCallback((selection) => {
-        console.log(selection);
-        setSelectedFile(selection);
-    }, [selectedFile])
+        setSelectedFileMemo(selection);
+    }, [setSelectedFileMemo])
     
     const modelSelection = useCallback((selection) => {
-        console.log(selection);
-        setSelectedModel(selection);
-    }, [selectedModel])
+        setSelectedModelMemo(selection);
+    }, [setSelectedModelMemo])
 
     return  <Layout>
                 <h1>Vocal Separation Project M&T2</h1>

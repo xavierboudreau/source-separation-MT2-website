@@ -22,23 +22,22 @@ export default function SimpleMenu(props) {
         //Sets status of menu
         setAnchorEl(event.currentTarget);
 
-        if(!myFiles.length){
-            // don't send again while we are sending
-            if (isSending) return
-            
-            // update state
-            setIsSending(true)
+        // don't send again while we are sending
+        if (isSending) return
+        
+        // update state
+        setIsSending(true)
 
-            // send the actual request
-            const response = await (await fetch('http://127.0.0.1:8001/'+props.endpoint,{method: 'GET', headers: {'Content-Type': 'application/json'}})).json()
-           
-            setMyFiles(response.files)
+        // send the actual request
+        const response = await (await fetch('http://127.0.0.1:8001/'+props.endpoint,{method: 'GET', headers: {'Content-Type': 'application/json'}})).json()
+        
+        setMyFiles(response.files)
 
-            // once the request is sent, update state again
-            //if (isMounted.current) // only update if we are still mounted
-            setIsSending(false)
-        }
-    }, [isSending, myFiles, props.endpoint])
+        // once the request is sent, update state again
+        //if (isMounted.current) // only update if we are still mounted
+        setIsSending(false)
+        
+    }, [isSending, setMyFiles, props.endpoint])
 
     const menuPrompt = selection ? selection : props.prompt;
 
