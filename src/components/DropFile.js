@@ -3,21 +3,16 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Progress} from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 class DropFile extends Component {
     constructor(props) {
-    super(props);
-        this.state = {
-        selectedFile: null,
-        loaded:0
-        }
-
+        super(props);
+        this.state = {selectedFile: null}
     }
+
     checkMimeType=(event)=>{
         //getting file object
         let files = event.target.files 
@@ -41,6 +36,7 @@ class DropFile extends Component {
         }
         return true;
     }
+
     maxSelectFile=(event)=>{
     let files = event.target.files
         if (files.length > 1) { 
@@ -51,6 +47,7 @@ class DropFile extends Component {
         }
     return true;
     }
+
     checkFileSize=(event)=>{
         let files = event.target.files
         let size = 10000000 
@@ -69,16 +66,14 @@ class DropFile extends Component {
         }
         return true;
     }
+    
     onChangeHandler=event=>{
         var files = event.target.files
-        if(this.maxSelectFile(event) && this.checkMimeType(event) &&    this.checkFileSize(event)){ 
-        // if return true allow to setState
-            this.setState({
-            selectedFile: files,
-            loaded:0
-        })
+        if(this.maxSelectFile(event) && this.checkMimeType(event) && this.checkFileSize(event)){ 
+            this.setState({selectedFile: files})
         }
     }
+
     onClickHandler = () => {
         if (this.state.selectedFile == null){
             toast.warn('Nothing to upload...')
@@ -91,19 +86,9 @@ class DropFile extends Component {
             data.append('file', this.state.selectedFile[x])
         }
 
-        axios.post("http://localhost:8001/upload", data, {
-            onUploadProgress: ProgressEvent => {
-                this.setState({
-                    loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
-                })
-            },
-        })
-        .then(res => { // then print response status
-            toast.success('upload success')
-        })
-        .catch(err => { // then print response status
-            toast.error('upload fail')
-        })
+        axios.post("http://localhost:8001/upload", data)
+        .then(res => {toast.success('upload success')})
+        .catch(err => {toast.error('upload fail')})
     }
 
     render() {
@@ -115,13 +100,8 @@ class DropFile extends Component {
                         <label htmlFor = "form-control">Upload a music file (wav,mp3,etc...) for vocal extraction!</label>
                         <input id="form-control" type="file" className="form-control" multiple onChange={this.onChangeHandler}/>
                     </div>  
-                    <div className="form-group">
-                        <ToastContainer />
-                        <Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>
-                    </div> 
-                    
+                    <ToastContainer />
                     <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-
                 </div>
             </div>
         </div>
