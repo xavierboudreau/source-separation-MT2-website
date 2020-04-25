@@ -1,5 +1,5 @@
 # source-separation-MT2-website
-React web app to demonstrate to extract vocals from an audio file. Built with [Gatsby.js](https://www.gatsbyjs.org).
+React web app that extracts vocals from an audio file. Built with [Gatsby.js](https://www.gatsbyjs.org).
 ## Demo
 [![Demo video](http://img.youtube.com/vi/2bpY5lM7T-A/0.jpg)](http://www.youtube.com/watch?v=2bpY5lM7T-A)
 
